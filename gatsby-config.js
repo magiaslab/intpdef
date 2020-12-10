@@ -3,9 +3,10 @@ require("dotenv").config({
 });
 
 const contentfulConfig = {
-  spaceId: process.env.ay4fd2r79vdu,
-  accessToken: process.env.B26cVOUbcspZRT1RcDEGpBCDQTRExchFqWKGQ8pLTFo ||
-    process.env.B26cVOUbcspZRT1RcDEGpBCDQTRExchFqWKGQ8pLTFo,
+  spaceId: process.env.CONTENTFUL_SPACE_ID,
+  accessToken:
+    process.env.CONTENTFUL_ACCESS_TOKEN ||
+    process.env.CONTENTFUL_DELIVERY_TOKEN,
 };
 
 // If you want to use the preview API please define
@@ -25,10 +26,7 @@ if (process.env.CONTENTFUL_HOST) {
   contentfulConfig.accessToken = process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN;
 }
 
-const {
-  spaceId,
-  accessToken
-} = contentfulConfig;
+const { spaceId, accessToken } = contentfulConfig;
 
 if (!spaceId || !accessToken) {
   throw new Error(
